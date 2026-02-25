@@ -1,15 +1,26 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        ArrayList<Libro> listaLibros = new ArrayList<>();
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        listaLibros.add(new Libro("El Señor de los Anillos 1", "Tolkien", 5));
+        listaLibros.add(new Libro("El Señor de los Anillos 2", "Tolkien", 2));
+        listaLibros.add(new Libro("El Señor de los Anillos 3", "Tolkien", 1));
+
+        System.out.println("\n=== ESTADO INICIAL ===");
+        for (Libro l : listaLibros) {
+            l.mostrarInformacion();
         }
+
+        System.out.println("\n=== PROCESO DE PRÉSTAMO ===");
+
+        Libro libroSeleccionado = listaLibros.get(2);
+        boolean exito = libroSeleccionado.prestarLibro(1);
+
+        System.out.println("¿Préstamo de: " + libroSeleccionado.getTitulo() + " -> exitoso?: " + exito);
+
+        System.out.println("\n=== ESTADO FINAL DEL LIBRO ===");
+        libroSeleccionado.mostrarInformacion();
     }
 }
